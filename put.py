@@ -61,4 +61,4 @@ for filename in os.listdir(sourceDir):
 	# Run the mutations for the work of Shakespeare
 	client.mutateRows(tablename, mutationsbatch)
 	
-client.close()
+transport.close()
