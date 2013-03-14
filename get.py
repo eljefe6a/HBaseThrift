@@ -34,21 +34,22 @@ scannerId = client.scannerOpenWithScan(tablename, scan)
 # Go through every row passed back by scanner
 row = client.scannerGet(scannerId)
 
-while row:
-	row = row[0]
-	
-	# Pull out values in columns
-	message = row.columns.get(messagecolumncf).value
-	username = row.columns.get(usernamecolumncf).value
-	linenumber = decode(row.columns.get(linenumbercolumncf).value)
-	
-	rowKey = row.row
-	
-	if linenumber % 10 == 0 and message.find("again") != -1:
-		print(rowKey + ":" + str(linenumber) + ":" + username + ":" + message);
-	
-	# Get the next row result
-	row = client.scannerGet(scannerId)
+# Go through every row passed back by scanner
+rowList = client.scannerGetList(scannerId,numRows)
+
+while rowList:
+        for row in rowList:
+                # Pull out values in columns
+                message = row.columns.get(messagecolumncf).value
+                username = row.columns.get(usernamecolumncf).value
+                linenumber = decode(row.columns.get(linenumbercolumncf).value)
+
+                rowKey = row.row
+                if linenumber % 10 == 0 and message.find("again") != -1:
+                        print(rowKey + ":" + str(linenumber) + ":" + username + ":" + message);
+
+        # Get the next row result
+        rowList = client.scannerGetList(scannerId,numRows)
 
 # Close scanner now that we're done with it
 client.scannerClose(scannerId)

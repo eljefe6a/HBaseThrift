@@ -5,6 +5,7 @@ import base64
 # The host and port to connect to Thrift server
 host = "localhost"
 port = 9090
+numRows = 1000
 
 tablename = "messagestable"
 cfname = "messages"
