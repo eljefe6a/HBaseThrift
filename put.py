@@ -22,7 +22,7 @@ tables = client.getTableNames()
 found = False
 
 for table in tables:
-	if table.name == tablename
+	if table.name == tablename:
 		found = True
 
 if found == True:
