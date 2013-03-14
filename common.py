@@ -6,11 +6,11 @@ import base64
 host = "localhost"
 port = 9090
 
-tablename = "bleettableasdf"
-cfname = "bleets"
+tablename = "messagestable"
+cfname = "messages"
 
 # Column Descriptor names
-messagecolumn = "bleet"
+messagecolumn = "message"
 usernamecolumn = "username"
 linenumbercolumn = "line"
 
